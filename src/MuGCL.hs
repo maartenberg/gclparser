@@ -188,6 +188,8 @@ mutateExpr expr = filter (\m -> fst m /= NO_MUTATION) $ mutate expr
               m1 = (EOR_ALIAS_NEGATE, OpNeg $ BinopExpr Alias e1 e2)
               in
               [m1]
+            _ -> [(NO_MUTATION, BinopExpr op e1 e2)]
+
          in
          toplevel_mutants ++ group1 ++ group2
       --
